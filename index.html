@@ -12,7 +12,7 @@
 
 <div class="video-background">
     <div class="video-foreground">
-	<iframe id="video" playsinline="playsinline" src="https://www.youtube.com/embed/yEG2VTHS9yg?controls=0&amp;showinfo=0&amp;rel=0&amp;autoplay=1&amp;loop=1&amp;enablejsapi=1&amp;mute=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
+	<iframe id="video" src="https://www.youtube.com/embed/yEG2VTHS9yg?controls=0&amp;showinfo=0&amp;rel=0&amp;autoplay=1&amp;loop=1&amp;enablejsapi=1&amp;mute=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
     </div>
   </div>
 
@@ -295,12 +295,12 @@ canvas.height = canvas.clientHeight;
 
 var config = {
     TEXTURE_DOWNSAMPLE: 1,
-    DENSITY_DISSIPATION: 0.98,
-    VELOCITY_DISSIPATION: 0.99,
-    PRESSURE_DISSIPATION: 0.8,
+    DENSITY_DISSIPATION: 0,
+    VELOCITY_DISSIPATION: 0,
+    PRESSURE_DISSIPATION: 0,
     PRESSURE_ITERATIONS: 25,
     CURL: 30,
-    SPLAT_RADIUS: 0.005
+    SPLAT_RADIUS: 0.0,
 };
 
 var pointers   = [];
