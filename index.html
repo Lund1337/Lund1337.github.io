@@ -27,6 +27,79 @@
 </script>
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 <style>
+@mixin glitchCopy { 
+		content: attr(data-text);
+		position: fixed;
+}
+
+.glitch {
+	position: fixed;
+	/* Animation provies a slight random skew. Check bottom of doc
+	for more information on how to random skew. */
+	animation: glitch-skew 1s infinite linear alternate-reverse;
+	
+	// Creates a copy before our text. 
+	&::before{
+		// Duplicates our text with the mixin.
+		@include glitchCopy;
+		// Scoots text slightly to the left for the color offset.
+		left: 2px;
+		// Creates the color 'shadow' that happens on the glitch.
+		text-shadow: -2px 0 #ff00c1;
+		/* Creates an initial clip for our glitch. This works in
+		a typical top,right,bottom,left fashion and creates a mask
+		to only show a certain part of the glitch at a time. */
+		clip: rect(44px, 450px, 56px, 0);
+		/* Runs our glitch-anim defined below to run in a 5s loop, infinitely,
+		with an alternating animation to keep things fresh. */
+		animation: glitch-anim 5s infinite linear alternate-reverse;
+	}
+	
+	// Creates a copy after our text. Note comments from ::before.
+	&::after {
+		@include glitchCopy;
+		left: -2px;
+		text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+		animation: glitch-anim2 1s infinite linear alternate-reverse;
+	}
+}
+
+/* Creates an animation with 20 steaps. For each step, it calculates 
+a percentage for the specific step. It then generates a random clip
+box to be used for the random glitch effect. Also adds a very subtle
+skew to change the 'thickness' of the glitch.*/
+@keyframes glitch-anim {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+			transform: skew((random(100) / 100) + deg);
+    }
+  }
+}
+
+// Same deal, just duplicated for ultra randomness.
+@keyframes glitch-anim2 {
+  $steps: 20;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
+			transform: skew((random(100) / 100) + deg);
+    }
+  }
+}
+
+// Does the same deal as before, but now only skews. Used for main text.
+@keyframes glitch-skew {
+  $steps: 10;
+  @for $i from 0 through $steps {
+    #{percentage($i*(1/$steps))} {
+      transform: skew((random(10) - 5) + deg);
+    }
+  }
+}
+</style>
+<style>
 * { box-sizing: border-box; }
 .video-background {
   background: #000;
@@ -68,52 +141,14 @@ a {
 color: inherit;
     text-decoration: none !important;
 }
-
+</style>
+<style>
 .center {
-font-family: 'Montserrat', sans-serif;
-  position: fixed; /* or absolute */
+	font-family: 'Montserrat', sans-serif;
+  position: fixed;
   top: 50%;
   left: 50%;
-  /* bring your own prefixes */
   transform: translate(-50%, -50%);
-      animation: fadein 3s;
-    -moz-animation: fadein 3s; /* Firefox */
-    -webkit-animation: fadein 3s; /* Safari and Chrome */
-    -o-animation: fadein 3s; /* Opera */
-}â€‹
-
-@keyframes fadein {
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
-}
-@-moz-keyframes fadein { /* Firefox */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
-}
-@-webkit-keyframes fadein { /* Safari and Chrome */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
-}
-@-o-keyframes fadein { /* Opera */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity: 1;
-    }
-}
 </style>
 <script type="fe082246d1504ac9eed0964d-text/javascript">
 var i = 0;
@@ -162,18 +197,14 @@ document.onkeydown = function(e) {
 </head>
 	<div class="center">
 	<center>
-		<br><br>
-			<img src="lund.png" alt="lund" width="250" height="75">
-		<br><br>
-	
-		<div face="verdana" style="letter-spacing: 2px; font-size: 22px;">
+			<img src="lund.png" alt="lund" width="300" height="100">
+		<br>
+		<div face="center" style="letter-spacing: 1px; font-size: 22px;">
 			<a target=" " href="https://steamcommunity.com/profiles/76561198390838427">STEAM</a> /
 			<a href="https://discord.gg/zVcgHPrPmX" title="Lund#0118">DISCORD</a> /
 			<a target=" " href="https://www.youtube.com/channel/UC5_oiqwYoWMjcvlHnDoJGWw">YOUTUBE</a> /
 			<a target=" " href="https://www.twitch.tv/lund55">TWITCH</a> /
 			<a target=" " href="https://www.instagram.com/eduard55_/">INSTAGRAM</a>
-			<h1 class="glitch" data-text="glitch">glitch</h1>
-		</div>
 	</center>
 	</div>
 </head>
@@ -249,127 +280,6 @@ canvas {
   height: 100%;
   z-index: -999999999;
   opacity: 0.7;
-}
-</style>
-<style>
-@import url('https://fonts.googleapis.com/css?family=Montserrat:100');
-
-
-html, body, h1 {
-	padding: 0;
-	margin: 0;
-	font-family: 'Montserrat', sans-serif;
-}
-
-#app {
-	background: rgb(10,10,10);
-	height: 100vh;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	background: linear-gradient(rgba(10,10,10,.6),rgba(0,0,0,.9)), repeating-linear-gradient(0, transparent, transparent 2px, black 3px, black 3px),
-		url('https://images.unsplash.com/photo-1506399558188-acca6f8cbf41?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=7118759521e3184778a3b5e010e202c6');
-	background-size: cover;
-	background-position: center;
-	z-index: 1;
-}
-
-#wrapper {
-	 text-align: center;
-}
-
-.sub {
-	color: rgb(100,220,220);
-	letter-spacing: 1em;
-}
-
-// Here's the meat and potatoes.
-
-/* Our mixin positions a copy of our text
-directly on our existing text, while
-also setting content to the appropriate
-text set in the data-text attribute. */
-@mixin glitchCopy { 
-		content: attr(data-text);
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-}
-
-.glitch {
-	position: relative;
-	color: white;
-	font-size: 4em;
-	letter-spacing: .5em;
-	/* Animation provies a slight random skew. Check bottom of doc
-	for more information on how to random skew. */
-	animation: glitch-skew 1s infinite linear alternate-reverse;
-	
-	// Creates a copy before our text. 
-	&::before{
-		// Duplicates our text with the mixin.
-		@include glitchCopy;
-		// Scoots text slightly to the left for the color offset.
-		left: 2px;
-		// Creates the color 'shadow' that happens on the glitch.
-		text-shadow: -2px 0 #ff00c1;
-		/* Creates an initial clip for our glitch. This works in
-		a typical top,right,bottom,left fashion and creates a mask
-		to only show a certain part of the glitch at a time. */
-		clip: rect(44px, 450px, 56px, 0);
-		/* Runs our glitch-anim defined below to run in a 5s loop, infinitely,
-		with an alternating animation to keep things fresh. */
-		animation: glitch-anim 5s infinite linear alternate-reverse;
-	}
-	
-	// Creates a copy after our text. Note comments from ::before.
-	&::after {
-		@include glitchCopy;
-		left: -2px;
-		text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
-		animation: glitch-anim2 1s infinite linear alternate-reverse;
-	}
-}
-
-/* Creates an animation with 20 steaps. For each step, it calculates 
-a percentage for the specific step. It then generates a random clip
-box to be used for the random glitch effect. Also adds a very subtle
-skew to change the 'thickness' of the glitch.*/
-@keyframes glitch-anim {
-  $steps: 20;
-  @for $i from 0 through $steps {
-    #{percentage($i*(1/$steps))} {
-      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
-			transform: skew((random(100) / 100) + deg);
-    }
-  }
-}
-
-// Same deal, just duplicated for ultra randomness.
-@keyframes glitch-anim2 {
-  $steps: 20;
-  @for $i from 0 through $steps {
-    #{percentage($i*(1/$steps))} {
-      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
-			transform: skew((random(100) / 100) + deg);
-    }
-  }
-}
-
-// Does the same deal as before, but now only skews. Used for main text.
-@keyframes glitch-skew {
-  $steps: 10;
-  @for $i from 0 through $steps {
-    #{percentage($i*(1/$steps))} {
-      transform: skew((random(10) - 5) + deg);
-    }
-  }
 }
 </style>
 <script src="ajax.cloudflare.com/cdn-cgi/scripts/95c75768/cloudflare-static/rocket-loader.min.js" data-cf-settings="fe082246d1504ac9eed0964d-|49" defer=""></script></body>
