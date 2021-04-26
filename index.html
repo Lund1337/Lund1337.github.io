@@ -186,11 +186,11 @@ document.onkeydown = function(e) {
       var done = false;
       function onPlayerStateChange(event) {
 	  var state = player.getPlayerState();
-	  if(state == 0)
-        player.playVideo();
-      }	  
-      function unmutevid() {
-		player.unMute();
+	  if(!!player.isMuted())
+      {
+        player.unMute();
+      } else {
+        player.mute();
       }
 	  
     </script>
