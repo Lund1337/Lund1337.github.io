@@ -186,7 +186,7 @@ document.onkeydown = function(e) {
       var done = false;
       function onPlayerStateChange(event) {
 	  var state = player.getPlayerState();
-	  if(!!player.isMuted())
+	  if(state==0)
       {
         player.unMute();
       } else {
