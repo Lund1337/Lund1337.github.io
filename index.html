@@ -155,49 +155,6 @@ document.onkeydown = function(e) {
 	</div>
 </body>
 
-<script type="fe082246d1504ac9eed0964d-text/javascript">
-      // 2. This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
-
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      var player;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('video', {
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
-      }
-
-      // 4. The API will call this function when the video player is ready.
-      function onPlayerReady(event) {
-      }
-
-      // 5. The API calls this function when the player's state changes.
-      //    The function indicates that when playing a video (state=1),
-      //    the player should play for six seconds and then stop.
-      var done = false;
-      function onPlayerStateChange(event) {
-	  var state = player.getPlayerState();
-	  if(state == 0)
-        player.playVideo();
-      }	  
-      function unmutevid() {
-		player.unMute();
-		player.setVolume(50);
-      }
-	  function mutevid() {
-		player.Mute();
-      }
-	  
-    </script>
-	
 <!-- 1. The <iframe> (video player) will replace this <div> tag. -->
 <div class="iframe-container">
   <div id="player"></div>
@@ -230,7 +187,6 @@ document.onkeydown = function(e) {
     event.target.playVideo();
   }
 </script>
-
 <style>
 html, body {
   overflow: hidden;
@@ -250,5 +206,5 @@ canvas {
   opacity: 0.7;
 }
 </style>
-<script src="ajax.cloudflare.com/cdn-cgi/scripts/95c75768/cloudflare-static/rocket-loader.min.js" data-cf-settings="fe082246d1504ac9eed0964d-|49" defer=""></script></body>
+</body>
 </html>
