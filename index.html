@@ -211,26 +211,26 @@ document.onkeydown = function(e) {
   var player;
   
   function onYouTubeIframeAPIReady() {
-    player = new YT.Player('video', {
+    player = new YT.Player('wp-custom-header-video', {
       events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
       }
     });
   }
-  function onPlayerStateChange() {
-      var state = player.getPlayerState();
-      if(state == 0)
-      player.playVideo();
+  
+  function onPlayerReady() {
+    player.playVideo();
   }
+
   
   document.getElementById("mute").addEventListener('click', function(event) {
-      console.log(player);
-      if (player.isMuted()) {
+  
+    if (player.isMuted()) {
       player.unMute();
-      } else {
+    } else {
       player.mute();
-      }
+    }
   });
 </script>
 
