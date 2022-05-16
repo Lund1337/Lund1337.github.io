@@ -5,7 +5,7 @@
       <meta content="𝓛und" property="og:title" />
       <meta name="author" content="Lund" />
       <meta content="https://lund.wtf" property="og:url" />
-      <meta property="og:description" content="STEAM ⨯ DISCORD ⨯ YOUTUBE ⨯ TWITCH ⨯ TWITTER" />
+      <meta property="og:description" content="STEAM ⨯ DISCORD ⨯ YOUTUBE ⨯ TWITCH" />
       <meta content="https://cdn.discordapp.com/attachments/654385192341078016/975752646956814346/L.png" property="og:image" />
       <meta content="#ffffff" data-react-helmet="true" name="theme-color" />
       <meta name="twitter:card" content="summary_large_image" />
@@ -158,12 +158,12 @@ function loop() {
 document.addEventListener('contextmenu', event => event.preventDefault());
 
 document.onkeydown = function(e) {
-        if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 117)) {
-            return false;
-        } else {
-            return true;
-        }
-};
+  if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 117)) {
+    return false;
+  } else {
+    return true;
+  }
+});
 </script>
 </head>
 	<div class="center">
@@ -178,7 +178,7 @@ document.onkeydown = function(e) {
       <a target=" " href="https://twitter.com/edw5_">TWITTER</a>
 			<br>
 		<div id="mute" style="cursor: pointer; letter-spacing: 1px; font-size: 14px;">
-			<a onclick="if (player.isMuted()) unmutevid(); else mutevid();">unmute</a>
+			<a onclick="muteUnmute();">unmute</a>
 		</div>
 	</center>
 	</div>
@@ -211,7 +211,7 @@ document.onkeydown = function(e) {
   var player;
   
   function onYouTubeIframeAPIReady() {
-    player = new YT.Player('wp-custom-header-video', {
+    player = new YT.Player('video', {
       events: {
         'onReady': onPlayerReady,
         'onStateChange': onPlayerStateChange
@@ -224,12 +224,20 @@ document.onkeydown = function(e) {
     player.setVolume(50, 50)
   }
 
+  function muteUnmute(){
+    var video =  iframe.getElementById('video'); 
+    if(video.isMuted()){
+        video.unMute();
+    }else{
+        video.mute();
+    }
+  }
   function unmutevid() {
-    player.unMute();
+    video.unMute();
     
   }
   function mutevid() {
-    player.mute();
+    video.mute();
   }
   });
 </script>
