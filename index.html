@@ -204,9 +204,11 @@ document.onkeydown = function(e) {
 </div>
 <script type="fe082246d1504ac9eed0964d-text/javascript">
   var tag = document.createElement('script');
+
   tag.src = "https://www.youtube.com/iframe_api";
   var firstScriptTag = document.getElementsByTagName('script')[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
   var player;
   function onYouTubeIframeAPIReady() {
     player = new YT.Player('video', {
@@ -215,26 +217,25 @@ document.onkeydown = function(e) {
         'onStateChange': onPlayerStateChange
       }
     });
-  
-  var done = false;
-  
-  function onPlayerStateChange(event) {
-  var state = player.getPlayerState();
-    if(state == 0)
-    player.playVideo();
-  }
-  function onPlayerReady() {
-    player.playVideo();
-    player.setVolume(50, 50)
   }
 
+  function onPlayerReady(event) {
+  }
+
+  var done = false;
+  function onPlayerStateChange(event) {
+  var state = player.getPlayerState();
+  if(state == 0)
+    player.playVideo();
+  }	  
+  
   function unmutevid() {
     player.unMute();
+    player.setVolume(50);
   }
   function mutevid() {
-    player.mute();
+  player.Mute();
   }
-  });
 </script>
 
 <style>
