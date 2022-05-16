@@ -123,46 +123,46 @@ center {
 </style>
 
 <script type="fe082246d1504ac9eed0964d-text/javascript">
-var i = 0;
-var titleText = [
-	"&#8205;",
-	"𝓛",
-	"𝓛u",
-	"𝓛un",
-	"𝓛und",
-	"𝓛und",
-	"𝓛und",
-	"𝓛un",
-	"𝓛u",
-	"𝓛",
-];
-
-if (document.addEventListener) {
-	document.addEventListener("DOMContentLoaded", function() {
-		loaded();
-	});
-} else if (document.attachEvent) {
-	document.attachEvent("onreadystatechange", function() {
-		loaded();
-	});
-}
-
-function loaded() {
-	setInterval(loop, 500);
-}
-
-function loop() {
-	document.getElementsByTagName("title")[0].innerHTML = titleText[i++ % titleText.length];
-}
-
-document.addEventListener('contextmenu', event => event.preventDefault());
-
-document.onkeydown = function(e) {
-  if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 117)) {
-    return false;
-  } else {
-    return true;
+  var i = 0;
+  var titleText = [
+    "&#8205;",
+    "𝓛",
+    "𝓛u",
+    "𝓛un",
+    "𝓛und",
+    "𝓛und",
+    "𝓛und",
+    "𝓛un",
+    "𝓛u",
+    "𝓛",
+  ];
+  
+  if (document.addEventListener) {
+    document.addEventListener("DOMContentLoaded", function() {
+      loaded();
+    });
+  } else if (document.attachEvent) {
+    document.attachEvent("onreadystatechange", function() {
+      loaded();
+    });
   }
+  
+  function loaded() {
+    setInterval(loop, 500);
+  }
+  
+  function loop() {
+    document.getElementsByTagName("title")[0].innerHTML = titleText[i++ % titleText.length];
+  }
+  
+  document.addEventListener('contextmenu', event => event.preventDefault());
+  
+  document.onkeydown = function(e) {
+          if (e.ctrlKey && (e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 117)) {
+              return false;
+          } else {
+              return true;
+          }
 </script>
 </head>
 	<div class="center">
@@ -219,32 +219,19 @@ document.onkeydown = function(e) {
   }
 
   function onPlayerReady(event) {
+    player.playVideo();
   }
 
   var done = false;
   function onPlayerStateChange(event) {
-  var state = player.getPlayerState();
-  if(state == 0)
-    player.playVideo();
   }	  
-  function unmuteVideo() {
-    player.unMute();
-    return false;
-  }
-  function muteVideo() {
-    player.mute();
-    return false;
-  }
-  function setVolumeVideo(volume) {
-    player.setVolume(volume);
-    return false;
-  }
+
 
   function togglemute() {
   if(!!player.isMuted())
       {
         player.unMute();
-        player.setVolume(50)
+        player.setVolume(20)
       } else {
         player.mute();
       }
