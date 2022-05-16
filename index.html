@@ -178,7 +178,7 @@ document.onkeydown = function(e) {
       <a target=" " href="https://twitter.com/edw5_">TWITTER</a>
 			<br>
 		<div id="mute" style="cursor: pointer; letter-spacing: 1px; font-size: 14px;">
-			<a onclick="muteUnmute();">unmute</a>
+			<a onclick="unmutevid();">unmute</a>
 		</div>
 	</center>
 	</div>
@@ -195,7 +195,7 @@ document.onkeydown = function(e) {
 </head>
 <body>
   <div class="footer" face="verdana" style="letter-spacing: 1px; font-size: 12px;">
-  <a href="mailto:edward@lund.wtf">©</a>
+  <a target=" " href="mailto:edward@lund.wtf">©</a>
 	</div>
 </body>
 
@@ -227,13 +227,7 @@ document.onkeydown = function(e) {
     player.playVideo();
     player.setVolume(50, 50)
   }
-  function muteUnmute(){
-    if(player.isMuted()){
-      player.unMute();
-    }else{
-      player.mute();
-    }
-  }
+
   function unmutevid() {
     player.unMute();
   }
