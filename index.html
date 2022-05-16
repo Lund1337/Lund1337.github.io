@@ -5,11 +5,7 @@
       <meta content="𝓛und" property="og:title" />
       <meta name="author" content="Lund" />
       <meta content="https://lund.wtf" property="og:url" />
-      <meta property="og:description" content="ˣ STEAM" />
-      <meta property="og:description" content="ˣ DISCORD" />
-      <meta property="og:description" content="ˣ YOUTUBE" />
-      <meta property="og:description" content="ˣ TWITCH" />
-      <meta property="og:description" content="ˣ TWITTER" />
+      <meta property="og:description" content="STEAM ⨯ DISCORD ⨯ YOUTUBE ⨯ TWITCH ⨯ TWITTER" />
       <meta content="https://cdn.discordapp.com/attachments/654385192341078016/975752646956814346/L.png" property="og:image" />
       <meta content="#ffffff" data-react-helmet="true" name="theme-color" />
       <meta name="twitter:card" content="summary_large_image" />
@@ -175,14 +171,14 @@ document.onkeydown = function(e) {
 			<img src="Images\Lund(Tarrget_OI).png" alt="lund" width="300" height="100">
 		<br>
 		<div face="center" style="letter-spacing: 1px; font-size: 35px; letter-spacing: -3px;">
-			<a target=" " href="https://steamcommunity.com/profiles/76561198390838427">STEAM</a> 〤
-			<a href="javascript:alert('Discord: Lund#5555');" title="Lund#5555">DISCORD</a> 〤
-			<a target=" " href="https://www.youtube.com/c/LundRust">YOUTUBE</a> 〤
-			<a target=" " href="https://www.twitch.tv/LundRust">TWITCH</a> 〤
+			<a target=" " href="https://steamcommunity.com/profiles/76561198390838427">STEAM</a> ⨯
+			<a href="javascript:alert('Discord: Lund#5555');" title="Lund#5555">DISCORD</a> ⨯
+			<a target=" " href="https://www.youtube.com/c/LundRust">YOUTUBE</a> ⨯
+			<a target=" " href="https://www.twitch.tv/LundRust">TWITCH</a> ⨯
       <a target=" " href="https://twitter.com/edw5_">TWITTER</a>
 			<br>
 		<div id="mute" style="cursor: pointer; letter-spacing: 1px; font-size: 14px;">
-			<a onclick="if (!window.__cfRLUnblockHandlers) return false; unmutevid();">unmute</a>
+			<button id="mute">Mute/UnMute</button>
 		</div>
 	</center>
 	</div>
@@ -207,48 +203,37 @@ document.onkeydown = function(e) {
   <div id="player"></div>
 </div>
 <script type="fe082246d1504ac9eed0964d-text/javascript">
-      // 2. This code loads the IFrame Player API code asynchronously.
-      var tag = document.createElement('script');
-
-      tag.src = "https://www.youtube.com/iframe_api";
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-      // 3. This function creates an <iframe> (and YouTube player)
-      //    after the API code downloads.
-      var player;
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('video', {
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  
+  var player;
+  
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('video', {
+      events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
       }
+    });
+  }
+  function onPlayerStateChange() {
+      var state = player.getPlayerState();
+      if(state == 0)
+      player.playVideo();
+  }
+  
+  document.getElementById("mute").addEventListener('click', function(event) {
+      console.log(player);
+      if (player.isMuted()) {
+      player.unMute();
+      } else {
+      player.mute();
+      }
+  });
+</script>
 
-      // 4. The API will call this function when the video player is ready.
-      function onPlayerReady(event) {
-      }
-
-      // 5. The API calls this function when the player's state changes.
-      //    The function indicates that when playing a video (state=1),
-      //   the player should play for six seconds and then stop.
-      var done = false;
-      function onPlayerStateChange(event) {
-	    var state = player.getPlayerState();
-	    if(state == 0)
-        player.playVideo();
-      }	  
-      function unmutevid() {
-		player.unMute();
-		player.setVolume(50);
-      }
-	  function mutevid() {
-		player.Mute();
-      }
-	  
-    </script>
-	
 <style>
 html, body {
   overflow: hidden;
