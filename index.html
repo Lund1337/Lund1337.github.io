@@ -178,7 +178,7 @@ document.onkeydown = function(e) {
       <a target=" " href="https://twitter.com/edw5_">TWITTER</a>
 			<br>
 		<div id="mute" style="cursor: pointer; letter-spacing: 1px; font-size: 14px;">
-			<button id="mute">Mute/UnMute</button>
+			<a onclick="if (player.isMuted()) unmutevid() else player.mute();">unmute</a>
 		</div>
 	</center>
 	</div>
@@ -224,12 +224,11 @@ document.onkeydown = function(e) {
   }
 
   
-  document.getElementById("mute").addEventListener('click', function(event) {
-  
-    if (player.isMuted()) {
+    function unmutevid() {
       player.unMute();
-    } else {
-      player.mute();
+    }
+    function mutevid() {
+      player.Mute();
     }
   });
 </script>
