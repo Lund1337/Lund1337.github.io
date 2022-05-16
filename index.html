@@ -1,128 +1,164 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>&#8205;</title>
-      <meta content="𝓛und" property="og:title" />
-      <meta name="author" content="Lund" />
-      <meta content="https://lund.wtf" property="og:url" />
-      <meta property="og:description" content="STEAM ⨯ DISCORD ⨯ YOUTUBE ⨯ TWITCH" />
-      <meta content="https://cdn.discordapp.com/attachments/654385192341078016/975752646956814346/L.png" property="og:image" />
-      <meta content="#ffffff" data-react-helmet="true" name="theme-color" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="google-site-verification" content="0LeoRs9PfqmcQ4ySoSioUI8FZUEWbC7PMc07GY8xU28" />
-    </head>  
-  <head>
+<head>
+  <title>&#8205;</title>
+    <meta content="𝓛und" property="og:title" />
+    <meta name="author" content="Lund" />
+    <meta content="https://lund.wtf" property="og:url" />
+    <meta property="og:description" content="STEAM ⨯ DISCORD ⨯ YOUTUBE ⨯ TWITCH" />
+    <meta content="https://cdn.discordapp.com/attachments/654385192341078016/975752646956814346/L.png" property="og:image" />
+    <meta content="#ffffff" data-react-helmet="true" name="theme-color" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="Icons\L(Tarrget_PI).png" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+</head>      
+<body>
 <canvas></canvas>
-
 <div class="video-background">
   <div class="video-foreground">
 	  <iframe id="video" src="https://www.youtube.com/embed/QLxqEADKlr8?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1&mute=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
   </div>
 </div>
-
-<!--False Alarm>
+<!--False Alarm(1)>
 <div class="video-background">
   <div class="video-foreground">
 	  <iframe id="video" src="https://www.youtube.com/embed/CW5oGRx9CLM?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1&mute=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
   </div>
   </div>
 <---->
-	
-<!--Skeler>
+<!--Skeler(2)>
 <div class="video-background">
   <div class="video-foreground">
 	  <iframe id="video" src="https://www.youtube.com/embed/J4t4pMZBXZg?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1&mute=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
   </div>
   </div>
 <---->
-
-<!--LSD>
+<!--LSD(3)>
 <div class="video-background">
   <div class="video-foreground">
 	  <iframe id="video" src="https://www.youtube.com/embed/yEG2VTHS9yg?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1&mute=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
   </div>
   </div>
 <---->
-
-<!--LUND.WTF>
-<div class="video-background">
-  <div class="video-foreground">
-	  <iframe id="video" src="https://www.youtube.com/embed/zfFfqKMdHZc?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1&mute=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
-  </div>
-  </div>
-<---->
-
-<!--LXST CXNTURY>
+<!--LXST CXNTURY(4)>
 <div class="video-background">
   <div class="video-foreground">
 	  <iframe id="video" src="https://www.youtube.com/embed/QLxqEADKlr8?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1&mute=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
   </div>
   </div>
 <---->
+<div class="center">
+  <center>
+		<img src="Images\Lund(Tarrget_OI).png" alt="lund" width="300" height="100">
+	<br>
+	  <div face="center" style="letter-spacing: 1px; font-size: 35px; letter-spacing: -3px;">
+		  <a target=" " href="https://steamcommunity.com/profiles/76561198390838427">STEAM</a> ⨯
+		  <a href="javascript:alert('Discord: Lund#5555');" title="Lund#5555">DISCORD</a> ⨯
+		  <a target=" " href="https://www.youtube.com/c/LundRust">YOUTUBE</a> ⨯
+		  <a target=" " href="https://www.twitch.tv/LundRust">TWITCH</a> ⨯
+      <a target=" " href="https://twitter.com/edw5_">TWITTER</a>
+  </br>
+	  <div id="mute" style="cursor: pointer; letter-spacing: 1px; font-size: 14px;">
+      <img src="Icons/sound_on.png" onclick="toggleSound(this); togglemute()" width=20px height=14px>
+  </center>
+</div>
 
-<title>&#8205;</title>
-  <script type="fe082246d1504ac9eed0964d-text/javascript">
+<div class="footer" face="verdana" style="letter-spacing: 1px; font-size: 12px;">
+  <a target=" " href="mailto:edward@lund.wtf">©</a>
+</div>
+
+<div class="iframe-container">
+  <div id="player"></div>
+</div>
+
+<style type ="text/css" >
+	.footer{ 
+	position: fixed;     
+	text-align: center;    
+	bottom: 1px; 
+	width: 100%;
+  }  
+</style>
+
+<style>
+html, body {
+  overflow: hidden;
+  color: #ffffff;
+}
+body {
+  margin: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+}
+canvas {
+  width: 100%;
+  height: 100%;
+  z-index: -999999999;
+  opacity: 0.7;
+}
+</style>
+
+<style>
+  * { box-sizing: border-box; }
+  .video-background {
+    background: #000;
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: -99;
+  }
+  .video-foreground,
+  .video-background iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  #vidtop-content {
+    top: 0;
+    color: #fff;
+  }
+  .vid-info { position: absolute; top: 0; right: 0; width: 33%; background: rgba(0,0,0,0.3); color: #fff; padding: 1rem; font-family: Avenir, Helvetica, sans-serif; }
+  .vid-info h1 { font-size: 2rem; font-weight: 700; margin-top: 0; line-height: 1.2; }
+  .vid-info a { display: block; color: #fff; text-decoration: none; background: rgba(0,0,0,0.5); transition: .6s background; border-bottom: none; margin: 1rem auto; text-align: center; }
+  @media (min-aspect-ratio: 16/9) {
+    .video-foreground {height: 300%; top: -100%;}
+  }
+  @media (max-aspect-ratio: 16/9) {
+    .video-foreground {width: 300%; left: -100%;}
+  }
+  @media all and (max-width: 600px) {
+  .vid-info { width: 50%; padding: .5rem; }
+  .vid-info h1 { margin-bottom: .2rem; }
+  }
+  @media all and (max-width: 500px) {
+  .vid-info .acronym { display: none; }
+  }
+  body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;}
+  a {
+  color: inherit;
+      text-decoration: none !important;
+  }
+  </style>
+  
+  <style>
+  @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+  center {
+    font-family: 'Roboto', sans-serif;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  </style>
+
+<script type="fe082246d1504ac9eed0964d-text/javascript">
   window.onkeydown = function(evt) {if(evt.keyCode == 123 || evt.keyCode == 85 || evt.keyCode == 17 || evt.keyCode == 16 || evt.keyCode == 74 || evt.keyCode == 73) return false;};
   window.onkeypress = function(evt) {if(evt.keyCode == 123 || evt.keyCode == 85 || evt.keyCode == 17 || evt.keyCode == 16 || evt.keyCode == 74 || evt.keyCode == 73) return false;};
 </script>
-
-<style>
-* { box-sizing: border-box; }
-.video-background {
-  background: #000;
-  position: fixed;
-  top: 0; right: 0; bottom: 0; left: 0;
-  z-index: -99;
-}
-.video-foreground,
-.video-background iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-#vidtop-content {
-	top: 0;
-	color: #fff;
-}
-.vid-info { position: absolute; top: 0; right: 0; width: 33%; background: rgba(0,0,0,0.3); color: #fff; padding: 1rem; font-family: Avenir, Helvetica, sans-serif; }
-.vid-info h1 { font-size: 2rem; font-weight: 700; margin-top: 0; line-height: 1.2; }
-.vid-info a { display: block; color: #fff; text-decoration: none; background: rgba(0,0,0,0.5); transition: .6s background; border-bottom: none; margin: 1rem auto; text-align: center; }
-@media (min-aspect-ratio: 16/9) {
-  .video-foreground {height: 300%; top: -100%;}
-}
-@media (max-aspect-ratio: 16/9) {
-  .video-foreground {width: 300%; left: -100%;}
-}
-@media all and (max-width: 600px) {
-.vid-info { width: 50%; padding: .5rem; }
-.vid-info h1 { margin-bottom: .2rem; }
-}
-@media all and (max-width: 500px) {
-.vid-info .acronym { display: none; }
-}
-body{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;}
-a {
-color: inherit;
-    text-decoration: none !important;
-}
-</style>
-
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-center {
-  font-family: 'Roboto', sans-serif;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-</style>
 
 <script type="fe082246d1504ac9eed0964d-text/javascript">
   var i = 0;
@@ -167,46 +203,6 @@ center {
     }
   }
 </script>
-</head>
-
-<head>
-	<div class="center">
-	  <center>
-			<img src="Images\Lund(Tarrget_OI).png" alt="lund" width="300" height="100">
-		<br>
-		  <div face="center" style="letter-spacing: 1px; font-size: 35px; letter-spacing: -3px;">
-			  <a target=" " href="https://steamcommunity.com/profiles/76561198390838427">STEAM</a> ⨯
-			  <a href="javascript:alert('Discord: Lund#5555');" title="Lund#5555">DISCORD</a> ⨯
-			  <a target=" " href="https://www.youtube.com/c/LundRust">YOUTUBE</a> ⨯
-			  <a target=" " href="https://www.twitch.tv/LundRust">TWITCH</a> ⨯
-        <a target=" " href="https://twitter.com/edw5_">TWITTER</a>
-    </br>
-		  <div id="mute" style="cursor: pointer; letter-spacing: 1px; font-size: 14px;">
-        <img src="Icons/sound_on.png" onclick="toggleSound(this); togglemute()" width=20px height=14px>
-	  </center>
-	</div>
-</head>
-
-<head>
-	<style type ="text/css" >
-		.footer{ 
-		position: fixed;     
-		text-align: center;    
-		bottom: 1px; 
-		width: 100%;
-	}  
-	</style>
-</head>
-
-<body>
-  <div class="footer" face="verdana" style="letter-spacing: 1px; font-size: 12px;">
-  <a target=" " href="mailto:edward@lund.wtf">©</a>
-	</div>
-</body>
-
-<div class="iframe-container">
-  <div id="player"></div>
-</div>
 
 <script type="fe082246d1504ac9eed0964d-text/javascript">
   var tag = document.createElement('script');
@@ -247,28 +243,7 @@ center {
   function toggleSound(img) {
     img.src = img.src == "https://cdn.discordapp.com/attachments/654385192341078016/975812691203588166/sound_on.png" ? "https://cdn.discordapp.com/attachments/654385192341078016/975812691446890526/sound_off.png" : "https://cdn.discordapp.com/attachments/654385192341078016/975812691203588166/sound_on.png";
   }
-
 </script>
-
-<style>
-html, body {
-  overflow: hidden;
-  color: #ffffff;
-}
-body {
-  margin: 0;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-
-}
-canvas {
-  width: 100%;
-  height: 100%;
-  z-index: -999999999;
-  opacity: 0.7;
-}
-</style>
 
 <script type="fe082246d1504ac9eed0964d-text/javascript">
 'use strict';
