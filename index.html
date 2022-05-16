@@ -163,7 +163,6 @@ document.onkeydown = function(e) {
   } else {
     return true;
   }
-});
 </script>
 </head>
 	<div class="center">
@@ -178,7 +177,7 @@ document.onkeydown = function(e) {
       <a target=" " href="https://twitter.com/edw5_">TWITTER</a>
 			<br>
 		<div id="mute" style="cursor: pointer; letter-spacing: 1px; font-size: 14px;">
-			<a onclick="togglemute();">unmute</a>
+			<a onclick="setVolumeVideo(50); if(IsMuted()) unmutedvid(); else mutevid();">unmute</a>
 		</div>
 	</center>
 	</div>
@@ -220,30 +219,26 @@ document.onkeydown = function(e) {
   }
 
   function onPlayerReady(event) {
+    player.playVideo();
   }
 
   var done = false;
-  function onPlayerStateChange(event) {
-  var state = player.getPlayerState();
-  if(state == 0)
-    player.playVideo();
-  }	  
   
   function unmutevid() {
     player.unMute();
   }
+
   function mutevid() {
     player.mute();
   }
+
   function IsMuted() {
     player.IsMuted();
   }
 
-  function togglemute() {
-  if(IsMuted)  
-    unmutevid();
-  } else {
-    mutevid();
+  function setVolumeVideo(volume) {
+    player.setVolume(volume);
+    return false;
   }
 </script>
 
