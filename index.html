@@ -178,7 +178,7 @@ document.onkeydown = function(e) {
       <a target=" " href="https://twitter.com/edw5_">TWITTER</a>
 			<br>
 		<div id="mute" style="cursor: pointer; letter-spacing: 1px; font-size: 14px;">
-			<a onclick="unmutevid();">unmute</a>
+			<a onclick="togglemute();">unmute</a>
 		</div>
 	</center>
 	</div>
@@ -231,10 +231,19 @@ document.onkeydown = function(e) {
   
   function unmutevid() {
     player.unMute();
-    player.setVolume(50);
   }
   function mutevid() {
-  player.Mute();
+    player.mute();
+  }
+  function IsMuted() {
+    player.IsMuted();
+  }
+
+  function togglemute() {
+  if(IsMuted)  
+    unmutevid();
+  } else {
+    mutevid();
   }
 </script>
 
