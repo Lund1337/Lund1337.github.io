@@ -215,6 +215,13 @@ document.onkeydown = function(e) {
         'onStateChange': onPlayerStateChange
       }
     });
+  
+  var done = false;
+  
+  function onPlayerStateChange(event) {
+  var state = player.getPlayerState();
+    if(state == 0)
+    player.playVideo();
   }
   function onPlayerReady() {
     player.playVideo();
