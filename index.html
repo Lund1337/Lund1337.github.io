@@ -177,7 +177,7 @@ document.onkeydown = function(e) {
       <a target=" " href="https://twitter.com/edw5_">TWITTER</a>
 			<br>
 		<div id="mute" style="cursor: pointer; letter-spacing: 1px; font-size: 14px;">
-			<a onclick="setVolumeVideo(50); if(IsMuted()) unmutedvid(); else mutevid();">unmute</a>
+			<a onclick="if(IsMuted()) unmutedvid() && setVolumeVideo(50); else mutevid();">unmute</a>
 		</div>
 	</center>
 	</div>
