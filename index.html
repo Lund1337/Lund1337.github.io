@@ -11,7 +11,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" type="image/x-icon" href="Icons\L(Tarrget_PI).png" />
-</head>      
+</head> 
 <body>
 <canvas></canvas>
 <div class="video-background">
@@ -24,7 +24,7 @@
   <center>
 		<img src="Images\Lund(Tarrget_OI).png" alt="lund" width="300" height="100">
 	<br>
-	  <div face="center" style="letter-spacing: 1px; font-size: 35px; letter-spacing: -3px;">
+	  <div face="center" style="letter-spacing: -1px; font-size: 35px;">
 		  <a target=" " href="https://steamcommunity.com/profiles/76561198390838427">STEAM</a> ⨯
 		  <a href="javascript:alert('Discord: Lund#5555');" title="Lund#5555">DISCORD</a> ⨯
 		  <a target=" " href="https://www.youtube.com/c/LundRust">YOUTUBE</a> ⨯
@@ -36,8 +36,11 @@
   </center>
 </div>
 
-<div class="footer" face="verdana" style="letter-spacing: 1px; font-size: 12px;">
-  <a target=" " href="mailto:edward@lund.wtf">©</a>
+<div class="footer1" face="verdana" style="letter-spacing: 1px; font-size: 10px;">
+  <a">©2022</a>
+</div>
+
+<div class="footer" data-target-resolver style="letter-spacing: 1px; font-size: 15px;">
 </div>
 
 <div class="iframe-container">
@@ -46,11 +49,20 @@
 
 <style type ="text/css" >
 	.footer{ 
-	position: fixed;     
-	text-align: center;    
+	position: fixed;
+	text-align: center;
 	bottom: 1px; 
 	width: 100%;
   }  
+</style>
+
+<style type ="text/css" >
+	.footer1{ 
+	position: fixed;
+	text-align: left;
+	bottom: 1px;
+	width: 100%;
+  }
 </style>
 
 <style>
@@ -131,6 +143,104 @@ canvas {
 <script type="fe082246d1504ac9eed0964d-text/javascript">
   window.onkeydown = function(evt) {if(evt.keyCode == 123 || evt.keyCode == 85 || evt.keyCode == 17 || evt.keyCode == 16 || evt.keyCode == 74 || evt.keyCode == 73) return false;};
   window.onkeypress = function(evt) {if(evt.keyCode == 123 || evt.keyCode == 85 || evt.keyCode == 17 || evt.keyCode == 16 || evt.keyCode == 74 || evt.keyCode == 73) return false;};
+</script>
+
+<script>
+  const resolver = {
+  resolve: function resolve(options, callback) {
+    const resolveString = options.resolveString || options.element.getAttribute('data-target-resolver');
+    const combinedOptions = Object.assign({}, options, {resolveString: resolveString});
+    
+    function getRandomInteger(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+    
+    function randomCharacter(characters) {
+      return characters[getRandomInteger(0, characters.length - 1)];
+    };
+    
+    function doRandomiserEffect(options, callback) {
+      const characters = options.characters;
+      const timeout = options.timeout;
+      const element = options.element;
+      const partialString = options.partialString;
+
+      let iterations = options.iterations;
+
+      setTimeout(() => {
+        if (iterations >= 0) {
+          const nextOptions = Object.assign({}, options, {iterations: iterations - 1});
+          if (iterations === 0) {
+            element.textContent = partialString;
+          } else {
+            element.textContent = partialString.substring(0, partialString.length - 1) + randomCharacter(characters);
+          }
+
+          doRandomiserEffect(nextOptions, callback)
+        } else if (typeof callback === "function") {
+          callback(); 
+        }
+      }, options.timeout);
+    };
+    
+    function doResolverEffect(options, callback) {
+      const resolveString = options.resolveString;
+      const characters = options.characters;
+      const offset = options.offset;
+      const partialString = resolveString.substring(0, offset);
+      const combinedOptions = Object.assign({}, options, {partialString: partialString});
+
+      doRandomiserEffect(combinedOptions, () => {
+        const nextOptions = Object.assign({}, options, {offset: offset + 1});
+
+        if (offset <= resolveString.length) {
+          doResolverEffect(nextOptions, callback);
+        } else if (typeof callback === "function") {
+          callback();
+        }
+      });
+    };
+
+    doResolverEffect(combinedOptions, callback);
+  } 
+}
+
+const strings = [
+  "All black whip, cash in the zip",
+  "Grab that shit, whole bag, don’t trip",
+  "North Leather seat, Northface lime green",
+  "Only pack cash for my motherfuckin' team",
+  "Bitch you never, bitch you never",
+  "Bitch you never came to me and claim that you so clever",
+  "Bitch you never, I’mma get her",
+  "Lost in the web full of fuckin trend-setters"
+];
+
+let counter = 0;
+
+const options = {
+  offset: 0,
+  timeout: 7,
+  iterations: 10,
+  characters: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'y', 'x', '#', '%', '&', '-', '+', '_', '?', '/', '\\', '=', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'],
+  resolveString: strings[counter],
+  element: document.querySelector('[data-target-resolver]')
+}
+
+function callback() {
+  setTimeout(() => {
+    counter ++;
+    
+    if (counter >= strings.length) {
+      counter = 0;
+    }
+    
+    let nextOptions = Object.assign({}, options, {resolveString: strings[counter]});
+    resolver.resolve(nextOptions, callback);
+  }, 1000);
+}
+
+resolver.resolve(options, callback);
 </script>
 
 <script type="fe082246d1504ac9eed0964d-text/javascript">
@@ -299,7 +409,7 @@ canvas {
   
   pointers.push( new pointerPrototype() );
   
-  var GLProgram = function () {    
+  var GLProgram = function () {
       function GLProgram( vertexShader, fragmentShader ) {
           if ( !(this instanceof GLProgram) )
               throw new TypeError( "Cannot call a class as a function" );
@@ -333,7 +443,7 @@ canvas {
   }();
   
   function compileShader( type, source ) {
-      var shader = gl.createShader( type );    
+      var shader = gl.createShader( type );
       gl.shaderSource( shader, source );
       gl.compileShader( shader );
   
@@ -620,6 +730,8 @@ canvas {
   
   }, false );
 </script>
+
 <script src="JS\wtf.js" data-cf-settings="fe082246d1504ac9eed0964d-|49" defer=""></script>
+
 </body>
 </html>
