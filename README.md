@@ -13,7 +13,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About
 
-[![Product Name Screen Shot][product-screenshot]](https://i.imgur.com/d7qDvEQ.png)
+[![Product Name Screen Shot][product-screenshot]](https://i.imgur.com/0X6R2i7.jpg)
 
 BetterDiscord pack with custom css, plugins & themes. Everything is customisable to your liking.
 
@@ -203,4 +203,4 @@ html, body {
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
-[product-screenshot]: readme/screenshot.png
+[product-screenshot]: Images/screenshot.jpg
