@@ -4,10 +4,10 @@
 <br />
 <div align="center">
   <a href="https://github.com/Lund1337/Lund1337.github.io">
-    <img src="readme/bd_logo.jpg" alt="Logo" width="80" height="80">
+    <img src="Images/Lund(Tarrget_OI).png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">BetterDiscord Pack</h3>
+  <h3 align="center">Website</h3>
 </div>
 
 <!-- ABOUT THE PROJECT -->
