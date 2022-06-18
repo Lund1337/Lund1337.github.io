@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Lund1337/Lund1337.github.io">
-    <img src="Images/Lund(Tarrget_OI).png" alt="Logo" width="80" height="80">
+    <img src="Images/Lund(Tarrget_OI).png" alt="Logo" width="300" height="100">
   </a>
 
   <h3 align="center">Website</h3>
