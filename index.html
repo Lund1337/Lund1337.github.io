@@ -188,6 +188,47 @@ canvas {
 </script>
 
 <script>
+  var tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  var player;
+  function onYouTubeIframeAPIReady() {
+    player = new YT.Player('video', {
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  function onPlayerReady(event) {
+    player.playVideo();
+  }
+
+  var done = false;
+  function onPlayerStateChange(event) {
+  }	  
+
+
+  function togglemute() {
+  if(!!player.isMuted())
+      {
+        player.unMute();
+        player.setVolume(20)
+      } else {
+        player.mute();
+      }
+  }
+  
+  function toggleSound(img) {
+    img.src = img.src == "https://cdn.discordapp.com/attachments/654385192341078016/975812691203588166/sound_on.png" ? "https://cdn.discordapp.com/attachments/654385192341078016/975812691446890526/sound_off.png" : "https://cdn.discordapp.com/attachments/654385192341078016/975812691203588166/sound_on.png";
+  }
+</script>
+	
+<script>
 'use strict';
 
 var canvas = document.getElementsByTagName( 'canvas' )[ 0 ];
