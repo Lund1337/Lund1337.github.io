@@ -236,7 +236,7 @@ function getWebGLContext( canvas ) {
         support_linear_float = gl.getExtension( 'OES_texture_float_linear' );
     }
 
-    gl.clearColor( 0.0, 0.0, 0.0, 0.0 );
+    gl.clearColor( 0.0, 0.0, 0.0, 1.0 );
 
     var internalFormat   = isWebGL2 ? gl.RGBA16F : gl.RGBA;
     var internalFormatRG = isWebGL2 ? gl.RG16F : gl.RGBA;
@@ -263,15 +263,13 @@ function pointerPrototype() {
     this.dy    = 0;
     this.down  = false;
     this.moved = false;
-    this.color = [ 201, 2, 0 ];
+    this.color = [ 30, 0, 300 ];
 }
 
 pointers.push( new pointerPrototype() );
 
-var GLProgram = function () {
-    
+var GLProgram = function () {    
     function GLProgram( vertexShader, fragmentShader ) {
-
         if ( !(this instanceof GLProgram) )
             throw new TypeError( "Cannot call a class as a function" );
 
@@ -304,9 +302,7 @@ var GLProgram = function () {
 }();
 
 function compileShader( type, source ) {
-
-    var shader = gl.createShader( type );
-    
+    var shader = gl.createShader( type );    
     gl.shaderSource( shader, source );
     gl.compileShader( shader );
 
@@ -316,7 +312,7 @@ function compileShader( type, source ) {
 
 }
 
-var baseVertexShader               = compileShader( gl.VERTEX_SHADER, 'precision highp float; precision mediump sampler2D; attribute vec2 aPosition; varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB; uniform vec2 texelSize; void main () {     vUv = aPosition * 0.5 + 0.5;     vL = vUv - vec2(texelSize.x, 0.0);     vR = vUv + vec2(texelSize.x, 0.0);     vT = vUv + vec2(0.0, texelSize.y);     vB = vUv - vec2(0.0, texelSize.y);     gl_Position = vec4(aPosition, 0.0, 1.0); }' );
+var baseVertexShader               = compileShader( gl.VERTEX_SHADER,   'precision highp float; precision mediump sampler2D; attribute vec2 aPosition; varying vec2 vUv; varying vec2 vL; varying vec2 vR; varying vec2 vT; varying vec2 vB; uniform vec2 texelSize; void main () {     vUv = aPosition * 0.5 + 0.5;     vL = vUv - vec2(texelSize.x, 0.0);     vR = vUv + vec2(texelSize.x, 0.0);     vT = vUv + vec2(0.0, texelSize.y);     vB = vUv - vec2(0.0, texelSize.y);     gl_Position = vec4(aPosition, 0.0, 1.0); }' );
 var clearShader                    = compileShader( gl.FRAGMENT_SHADER, 'precision highp float; precision mediump sampler2D; varying vec2 vUv; uniform sampler2D uTexture; uniform float value; void main () {     gl_FragColor = value * texture2D(uTexture, vUv); }' );
 var displayShader                  = compileShader( gl.FRAGMENT_SHADER, 'precision highp float; precision mediump sampler2D; varying vec2 vUv; uniform sampler2D uTexture; void main () {     gl_FragColor = texture2D(uTexture, vUv); }' );
 var splatShader                    = compileShader( gl.FRAGMENT_SHADER, 'precision highp float; precision mediump sampler2D; varying vec2 vUv; uniform sampler2D uTarget; uniform float aspectRatio; uniform vec3 color; uniform vec2 point; uniform float radius; void main () {     vec2 p = vUv - point.xy;     p.x *= aspectRatio;     vec3 splat = exp(-dot(p, p) / radius) * color;     vec3 base = texture2D(uTarget, vUv).xyz;     gl_FragColor = vec4(base + splat, 1.0); }' );
@@ -349,7 +345,6 @@ var pressureProgram        = new GLProgram( baseVertexShader, pressureShader );
 var gradienSubtractProgram = new GLProgram( baseVertexShader, gradientSubtractShader );
 
 function initFramebuffers() {
-
     textureWidth  = gl.drawingBufferWidth >> config.TEXTURE_DOWNSAMPLE;
     textureHeight = gl.drawingBufferHeight >> config.TEXTURE_DOWNSAMPLE;
 
@@ -367,20 +362,15 @@ function initFramebuffers() {
 }
 
 function createFBO( texId, w, h, internalFormat, format, type, param ) {
-
     gl.activeTexture( gl.TEXTURE0 + texId );
-
     var texture = gl.createTexture();
-
     gl.bindTexture( gl.TEXTURE_2D, texture );
     gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, param );
     gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, param );
     gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE );
     gl.texParameteri( gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE );
     gl.texImage2D( gl.TEXTURE_2D, 0, internalFormat, w, h, 0, format, type, null );
-
     var fbo = gl.createFramebuffer();
-
     gl.bindFramebuffer( gl.FRAMEBUFFER, fbo );
     gl.framebufferTexture2D( gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, texture, 0 );
     gl.viewport( 0, 0, w, h );
@@ -391,7 +381,6 @@ function createFBO( texId, w, h, internalFormat, format, type, param ) {
 }
 
 function createDoubleFBO( texId, w, h, internalFormat, format, type, param ) {
-
     var fbo1 = createFBO( texId, w, h, internalFormat, format, type, param );
     var fbo2 = createFBO( texId + 1, w, h, internalFormat, format, type, param );
 
@@ -413,7 +402,6 @@ function createDoubleFBO( texId, w, h, internalFormat, format, type, param ) {
 }
 
 var blit = function () {
-
     gl.bindBuffer( gl.ARRAY_BUFFER, gl.createBuffer() );
     gl.bufferData( gl.ARRAY_BUFFER, new Float32Array( [ -1, -1, -1, 1, 1, 1, 1, -1 ] ), gl.STATIC_DRAW );
     gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, gl.createBuffer() );
@@ -433,9 +421,7 @@ var lastTime = Date.now();
 update();
 
 function update() {
-
     resizeCanvas();
-
     var dt = Math.min( (Date.now() - lastTime) / 1000, 0.016 );
     lastTime = Date.now();
 
@@ -492,7 +478,6 @@ function update() {
     blit( velocity.second[ 1 ] );
     velocity.swap();
 
-
     divergenceProgram.bind();
     gl.uniform2f( divergenceProgram.uniforms.texelSize, 1.0 / textureWidth, 1.0 / textureHeight );
     gl.uniform1i( divergenceProgram.uniforms.uVelocity, velocity.first[ 2 ] );
@@ -539,7 +524,6 @@ function update() {
 }
 
 function splat( x, y, dx, dy, color ) {
-
     splatProgram.bind();
     gl.uniform1i( splatProgram.uniforms.uTarget, velocity.first[ 2 ] );
     gl.uniform1f( splatProgram.uniforms.aspectRatio, canvas.width / canvas.height );
@@ -557,20 +541,15 @@ function splat( x, y, dx, dy, color ) {
 }
 
 function resizeCanvas() {
-
     ( canvas.width !== canvas.clientWidth || canvas.height !== canvas.clientHeight ) && ( canvas.width  = canvas.clientWidth, canvas.height = canvas.clientHeight, initFramebuffers() );
-
 }
 
 var count    = 0;
-var colorArr = [ 201, 2, 0 ];
+var colorArr = [ Math.random() + 0.2, Math.random() + 0.2, Math.random() + 0.2 ];
 
 canvas.addEventListener( 'mousemove', function ( e ) {
-
     count++;
-
-    ( count > 25 ) && (colorArr = [ 201,2,0 ], count = 0);
-
+    ( count > 25 ) && (colorArr = [ Math.random() + 0.2, Math.random() + 0.2, Math.random() + 0.2 ], count = 0);
     pointers[ 0 ].down  = true;
     pointers[ 0 ].color = colorArr;
     pointers[ 0 ].moved = pointers[ 0 ].down;
@@ -582,14 +561,11 @@ canvas.addEventListener( 'mousemove', function ( e ) {
 } );
 
 canvas.addEventListener( 'touchmove', function ( e ) {
-
     e.preventDefault();
-
     var touches = e.targetTouches;
-
     count++;
 
-    ( count > 25 ) && (colorArr = [ 201, 2, 0 ], count = 0);
+    ( count > 25 ) && (colorArr = [ Math.random() + 0.2, Math.random() + 0.2, Math.random() + 0.2 ], count = 0);
 
     for ( var i = 0, len = touches.length; i < len; i++ ) {
 
@@ -612,21 +588,6 @@ canvas.addEventListener( 'touchmove', function ( e ) {
     }
 
 }, false );
-
-function m( t ) {
-
-    for ( var e, n = document.getElementById( t ), i = n.innerHTML.replace( "&amp;", "&" ).split( "" ), a = "", o = 0, s = i.length; s > o; o++ ) {
-        e = i[ o ].replace( "&", "&amp" );
-        a += e.trim() ? '<span class="letter-' + o + '">' + e + "</span>" : "&nbsp;";
-    }
-
-    n.innerHTML = a;
-
-    setTimeout( function () {
-        n.className = "transition-in";
-    }, 500 * Math.random() + 500 );
-
-}
 </script>
 </body>
 </html>
