@@ -193,11 +193,14 @@ canvas {
   }
 
   function onPlayerReady(event) {
-    player.playVideo();
+    	player.playVideo();
+	player.setVolume(20)
   }
 
   var done = false;
   function onPlayerStateChange(event) {
+	player.playVideo();
+	player.setVolume(20)
   }	  
 
 
@@ -205,7 +208,6 @@ canvas {
   if(!!player.isMuted())
       {
         player.unMute();
-        player.setVolume(20)
       } else {
         player.mute();
       }
