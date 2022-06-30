@@ -108,7 +108,7 @@ canvas {
 <canvas></canvas>
 <div class="video-background">
   <div class="video-foreground">
-	  <iframe id="video" src="https://www.youtube.com/embed/qJIfavKyYvU?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&enablejsapi=1&mute=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
+	  <iframe id="video" src="https://www.youtube.com/embed/qJIfavKyYvU?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
 </div>
 </div>
 
@@ -278,7 +278,7 @@ resolver.resolve(options, callback);
   }
 </script>
 
-<script type="text/javascript">
+<script>
   var tag = document.createElement('script');
 
   tag.src = "https://www.youtube.com/iframe_api";
@@ -296,11 +296,14 @@ resolver.resolve(options, callback);
   }
 
   function onPlayerReady(event) {
-    player.playVideo();
+    	player.playVideo();
+	player.setVolume(20)
   }
 
   var done = false;
   function onPlayerStateChange(event) {
+	player.playVideo();
+	player.setVolume(20)
   }	  
 
 
@@ -308,7 +311,6 @@ resolver.resolve(options, callback);
   if(!!player.isMuted())
       {
         player.unMute();
-        player.setVolume(20)
       } else {
         player.mute();
       }
