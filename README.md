@@ -2,8 +2,6 @@
   <a href="https://lund.wtf/">
     <img src="Images/Lund/Lund(Tarrget_OI).png" alt="Logo" width="300" height="100">
   </a>
-
-  <h3 align="center">Website</h3>
 </div>
 
 ## About
