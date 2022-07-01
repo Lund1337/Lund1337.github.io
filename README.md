@@ -10,7 +10,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About
 
-[![Product Name Screen Shot][product-screenshot]](https://i.imgur.com/0X6R2i7.jpg)
+[![Product Name Screen Shot][product-screenshot]](https://i.imgur.com/AQwiVEE.jpg)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [product-screenshot]: Images/screenshot.jpg
