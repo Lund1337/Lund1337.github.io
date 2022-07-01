@@ -12,7 +12,5 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://i.imgur.com/0X6R2i7.jpg)
 
-Website playing music in the background and showing off your links to other social media.
-
 <!-- MARKDOWN LINKS & IMAGES -->
 [product-screenshot]: Images/screenshot.jpg
