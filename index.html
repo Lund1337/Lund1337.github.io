@@ -13,48 +13,45 @@
 <link rel="shortcut icon" type="image/x-icon" href="Images/Icons/L(Tarrget_PI).png" />
 
 <style>
+  @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+  
   header {
     display: none;
-}
-</style>
+  }
 
-<style>
-	.copyright{ 
+	#copyright{ 
 	position: fixed;
 	text-align: right;
 	bottom: 1px;
 	width: 100%;
   }
-</style>
 
-<style>
-html, body {
+  html, body {
   overflow: hidden;
   color: #ffffff;
-}
-body {
+  }
+
+  body {
   margin: 0;
   position: absolute;
   width: 100%;
   height: 100%;
+  }
 
-}
-canvas {
+  canvas {
   width: 100%;
   height: 100%;
   z-index: -999999999;
   opacity: 0.7;
-}
-</style>
+  }
 
-<style>
-  * { box-sizing: border-box; }
   .video-background {
     background: #000;
     position: fixed;
     top: 0; right: 0; bottom: 0; left: 0;
     z-index: -99;
   }
+
   .video-foreground,
   .video-background iframe {
     position: absolute;
@@ -64,10 +61,12 @@ canvas {
     height: 100%;
     pointer-events: none;
   }
+
   #vidtop-content {
     top: 0;
     color: #fff;
   }
+
   .vid-info { position: absolute; top: 0; right: 0; width: 33%; background: rgba(0,0,0,0.3); color: #fff; padding: 1rem; font-family: Avenir, Helvetica, sans-serif; }
   .vid-info h1 { font-size: 2rem; font-weight: 700; margin-top: 0; line-height: 1.2; }
   .vid-info a { display: block; color: #fff; text-decoration: none; background: rgba(0,0,0,0.5); transition: .6s background; border-bottom: none; margin: 1rem auto; text-align: center; }
@@ -89,10 +88,7 @@ canvas {
   color: inherit;
     text-decoration: none !important;
   }
-  </style>
-  
-  <style>
-  @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
   center {
     font-family: 'Roboto';
     position: fixed;
@@ -100,8 +96,10 @@ canvas {
     left: 50%;
     transform: translate(-50%, -50%);
   }
-  </style>
+
+</style>
 </head>
+
 <body>
 <header>Lund.wtf | STEAM ⨯ DISCORD ⨯ YOUTUBE ⨯ TELEGRAM</header>
 <canvas></canvas>
@@ -127,7 +125,7 @@ canvas {
   </center>
 </div>
 
-<div class="copyright" face="verdana" style="letter-spacing: 1px; font-size: 10px;">
+<div id="copyright" face="verdana" style="letter-spacing: 1px; font-size: 10px;">
   <a target=" " href="https://github.com/Lund1337/Lund1337.github.io" title="GitHub">Lund ©2022</a>
 </div>
 
