@@ -108,8 +108,36 @@
   #mute {
     cursor: pointer;
   }
-
 </style>
+</head>
+<body>
+<header>Lund.wtf | STEAM ⨯ DISCORD ⨯ YOUTUBE ⨯ TELEGRAM</header>
+<canvas></canvas>
+<div class="video-background">
+  <div class="video-foreground">
+	  <iframe id="video" src="https://www.youtube.com/embed/YORUdvPp3BA?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1&enablejsapi=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
+  </div>
+</div>
+
+<div class="center">
+  <center>
+    <img src="Images/Lund/Lund.gif" alt="lund" width="300" height="100">
+  <br>
+    <div id="main-text">
+      <a target=" " href="https://steamcommunity.com/profiles/76561198390838427" title="/id/Iund">STEAM</a> ⨯
+      <a target=" " href="https://discordapp.com/users/313732658293112832/" title="Lund#4846">DISCORD</a> ⨯
+      <a target=" " href="https://www.youtube.com/c/Lundcs" title="/c/lundcs">YOUTUBE</a> ⨯
+      <a target=" " href="https://t.me/Lund1337" title="/t.me/Lund1337">TELEGRAM</a>
+    </div>
+    <div id="mute">
+      <img src="Images/Icons/sound_on.png" title="unmute" onclick="toggleSound(this); togglemute()" width=20px height=14px>
+    </div>
+  </center>
+</div>
+
+<div id="copyright">
+  <a target=" " href="https://github.com/Lund1337/Lund1337.github.io" title="GitHub">Lund ©2022</a>
+</div>
 
 <script>
   var i = 0;
@@ -194,10 +222,10 @@
   }
   
   function toggleSound(img) {
-    img.src = img.src == "https://lund.wtf/Images/Icons/sound_on.png" ? "https://lund.wtf/Images/Icons/sound_off.png" : "https://lund.wtf/Images/Icons/sound_on.png";
+    img.src = img.src == "https://lund.wtf/Images/Icons/sound_on.png" ? "https://lund.wtf/Images/Icons/sound_on.png" : "https://lund.wtf/Images/Icons/sound_off.png";
   }
 </script>
-	
+
 <script>
 'use strict';
 
@@ -600,38 +628,5 @@ canvas.addEventListener( 'touchmove', function ( e ) {
 
 }, false );
 </script>
-</head>
-
-<body>
-
-<header>Lund.wtf | STEAM ⨯ DISCORD ⨯ YOUTUBE ⨯ TELEGRAM</header>
-
-<canvas></canvas>
-
-<div class="video-background">
-  <div class="video-foreground">
-	  <iframe id="video" src="https://www.youtube.com/embed/YORUdvPp3BA?controls=0&showinfo=0&rel=0&autoplay=1&loop=1&mute=1&enablejsapi=1" frameborder="0" allow="autoplay; fullscreen"></iframe>
-  </div>
-</div>
-
-<div class="center">
-  <center>
-    <img src="Images/Lund/Lund.gif" alt="lund" width="300" height="100">
-   <br>
-    <div id="main-text">
-      <a target=" " href="https://steamcommunity.com/profiles/76561198390838427" title="/id/Iund">STEAM</a> ⨯
-      <a target=" " href="https://discordapp.com/users/313732658293112832/" title="Lund#4846">DISCORD</a> ⨯
-      <a target=" " href="https://www.youtube.com/c/Lundcs" title="/c/lundcs">YOUTUBE</a> ⨯
-      <a target=" " href="https://t.me/Lund1337" title="/t.me/Lund1337">TELEGRAM</a>
-    </div>
-    <div id="mute">
-      <img src="Images/Icons/sound_on.png" title="unmute" onclick="toggleSound(this); togglemute()" width=20px height=14px>
-    </div>
-  </center>
-</div>
-
-<div id="copyright">
-  <a target=" " href="https://github.com/Lund1337/Lund1337.github.io" title="GitHub">Lund ©2022</a>
-</div>
 </body>
 </html>
