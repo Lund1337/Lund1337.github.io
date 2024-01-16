@@ -101,6 +101,20 @@ canvas {
   .vid-info h1 {
     margin-bottom: 0.2rem;
   }
+
+  span {
+    display: none;
+  }
+
+  #main-text {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  #main-text a {
+    flex-basis: 100%;
+    margin: -10px 0px;
+  }
 }
 
 @media all and (max-width: 500px) {
@@ -143,6 +157,20 @@ center {
   font-family: "Roboto";
   font-size: 35px;
   letter-spacing: -1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 140px;
+}
+
+#main-text a {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+}
+
+#main-text span {
+  font-size: 0.75em;
 }
 
 #mute {
